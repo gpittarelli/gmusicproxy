@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import re
+import codecs
 from setuptools import setup, find_packages
 import sys
 
 GMUSICPROXYFILE = 'GMusicProxy'
-version_line = open(GMUSICPROXYFILE, encoding='utf-8').read()
+version_line = codecs.open(GMUSICPROXYFILE, 'r', 'utf-8').read()
 version_re = r"programVersion = ['\"]([^'\"]*)['\"]"
 match = re.search(version_re, version_line, re.M)
 if match:
@@ -21,9 +22,9 @@ setup(
     author_email='mario.diraimondo@gmail.com',
     url='https://github.com/diraimondo/gmusicproxy',
     scripts=[GMUSICPROXYFILE],
-    license=open('LICENSE', encoding='utf-8').read(),
+    license=codecs.open('LICENSE', 'r', 'utf-8').read(),
     description='Google Play Music Proxy - "Let\'s stream Google Play Music using any music program"',
-    long_description=(open('README.md', encoding='utf-8').read()),
+    long_description=(codecs.open('README.md', 'r', 'utf-8').read()),
     install_requires=['gmusicapi>=3.1.1-dev', 'netifaces', 'pyxdg', 'eyed3', 'python-daemon'],
     dependency_links = ['https://github.com/simon-weber/Unofficial-Google-Music-API/tarball/develop#egg=gmusicapi-3.1.1-dev']
 )
